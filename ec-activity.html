@@ -304,8 +304,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
 
 <!-- ===== PERIOD CARDS ===== -->
 <div class="period-grid">
-  <div class="period-card">
-    <div class="period-badge" style="background:#9e9e9e;color:#fff">✓ 已結束</div>
+  <div class="period-card" id="card-61">
+    <div class="period-badge" id="badge-61" style="background:#9e9e9e;color:#fff">✓ 已結束</div>
     <div class="period-name">6-1檔 618年中大促</div>
     <div class="period-dates">2026/05/29（五）– 06/25（四）</div>
     <div class="period-stats">
@@ -320,8 +320,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
     </div>
     <div class="period-highlight">6/18「榮耀時刻」筆筆滿1,000送1,000點，可疊3層加碼</div>
   </div>
-  <div class="period-card active">
-    <div class="period-badge badge-red">🔥 進行中</div>
+  <div class="period-card" id="card-62">
+    <div class="period-badge badge-red" id="badge-62">🔥 進行中</div>
     <div class="period-name">6-2檔 77好運節</div>
     <div class="period-dates">2026/06/26（五）– 07/09（四）</div>
     <div class="period-stats">
@@ -336,8 +336,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
     </div>
     <div class="period-highlight">7/7–7/8「77神券」滿7,777折777元，呼應77節主題</div>
   </div>
-  <div class="period-card">
-    <div class="period-badge badge-blue">即將開始</div>
+  <div class="period-card" id="card-07">
+    <div class="period-badge badge-blue" id="badge-07">即將開始</div>
     <div class="period-name">07檔 APP全新體驗</div>
     <div class="period-dates">2026/07/10（五）– 08/06（四）</div>
     <div class="period-stats">
@@ -352,8 +352,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
     </div>
     <div class="period-highlight">LINE好友綁定即送「滿999折200元」神券，全期可用</div>
   </div>
-  <div class="period-card">
-    <div class="period-badge" style="background:#7b1fa2;color:#fff">🏮 新增</div>
+  <div class="period-card" id="card-08">
+    <div class="period-badge" id="badge-08" style="background:#7b1fa2;color:#fff">🏮 新增</div>
     <div class="period-name">08檔 慶中元</div>
     <div class="period-dates">2026/08/07（五）– 09/03（四）</div>
     <div class="period-stats">
@@ -368,8 +368,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
     </div>
     <div class="period-highlight">週末三層疊加：500神券 + 100神券 + 全支付每2,000送1,000點</div>
   </div>
-  <div class="period-card">
-    <div class="period-badge badge-blue">即將開始</div>
+  <div class="period-card" id="card-91">
+    <div class="period-badge badge-blue" id="badge-91">即將開始</div>
     <div class="period-name">9-1檔 99划算節</div>
     <div class="period-dates">2026/09/04（五）– 09/10（四）</div>
     <div class="period-stats">
@@ -384,8 +384,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
     </div>
     <div class="period-highlight">09/09 折扣碼「99全電商」：85折最高折 $999，限量 999 份</div>
   </div>
-  <div class="period-card">
-    <div class="period-badge badge-blue">即將開始</div>
+  <div class="period-card" id="card-92">
+    <div class="period-badge badge-blue" id="badge-92">即將開始</div>
     <div class="period-name">9-2檔 全民購物節</div>
     <div class="period-dates">2026/09/11（五）– 10/01（四）</div>
     <div class="period-stats">
@@ -400,8 +400,8 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
     </div>
     <div class="period-highlight">週三★200神券（09/16、09/23、09/30）+ 週末★100/500神券</div>
   </div>
-  <div class="period-card">
-    <div class="period-badge" style="background:#e65100;color:#fff">🏠 新增</div>
+  <div class="period-card" id="card-10">
+    <div class="period-badge" id="badge-10" style="background:#e65100;color:#fff">🏠 新增</div>
     <div class="period-name">10檔 全民回饋月＋家家＋雙11預跑</div>
     <div class="period-dates">2026/10/02（五）– 10/29（四）</div>
     <div class="period-stats">
@@ -1198,6 +1198,44 @@ td.hl{background:#eef0fa!important;color:#13227f;font-weight:700}
   el = document.getElementById('tl-label');      if(el) el.style.left = pct;
   el = document.getElementById('tl-date-label'); if(el){ el.style.left = pct; el.textContent = (today.getMonth()+1)+'/'+today.getDate()+' ▼'; }
   el = document.getElementById('tl-sub');        if(el) el.textContent = '紅線 = 今日（'+(today.getMonth()+1)+'/'+today.getDate()+'）';
+
+  // 各期卡片徽章動態更新
+  function updatePeriodBadges(){
+    var PERIODS = [
+      {bid:'badge-61', cid:'card-61', s:d(2026,5,29),  e:d(2026,6,25)},
+      {bid:'badge-62', cid:'card-62', s:d(2026,6,26),  e:d(2026,7,9)},
+      {bid:'badge-07', cid:'card-07', s:d(2026,7,10),  e:d(2026,8,6)},
+      {bid:'badge-08', cid:'card-08', s:d(2026,8,7),   e:d(2026,9,3)},
+      {bid:'badge-91', cid:'card-91', s:d(2026,9,4),   e:d(2026,9,10)},
+      {bid:'badge-92', cid:'card-92', s:d(2026,9,11),  e:d(2026,10,1)},
+      {bid:'badge-10', cid:'card-10', s:d(2026,10,2),  e:d(2026,10,29)}
+    ];
+    PERIODS.forEach(function(p){
+      var badge = document.getElementById(p.bid);
+      var card  = document.getElementById(p.cid);
+      if(!badge) return;
+      var isEnded  = today > p.e;
+      var isActive = today >= p.s && today <= p.e;
+      if(isEnded){
+        badge.className = 'period-badge';
+        badge.style.cssText = 'background:#9e9e9e;color:#fff';
+        badge.textContent = '✓ 已結束';
+      } else if(isActive){
+        badge.className = 'period-badge badge-red';
+        badge.style.cssText = '';
+        badge.textContent = '🔥 進行中';
+      } else {
+        badge.className = 'period-badge badge-blue';
+        badge.style.cssText = '';
+        badge.textContent = '即將開始';
+      }
+      if(card){
+        if(isActive){ card.classList.add('active'); }
+        else { card.classList.remove('active'); }
+      }
+    });
+  }
+  updatePeriodBadges();
 
   // 表格「← 今日」高亮
   var rowMap = {qiandao:'row-qiandao', nuanshen:'row-nuanshen', zhengshi:'row-zhengshi', fanchang:'row-fanchang'};
